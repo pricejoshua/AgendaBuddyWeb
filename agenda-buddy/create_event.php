@@ -9,7 +9,7 @@
 $response = array();
  
 // check for required fields
-if (isset($_POST['title']) && isset($_POST['location']) && isset($_POST['start_time']) && isset($_POST['end_time']) && isset($_POST['event_date'])){
+if (isset($_POST['title']) && isset($_POST['location']) && isset($_POST['start_time']) && isset($_POST['end_time'])){
  
     $title = $_POST['title'];
     $location = $_POST['location'];
