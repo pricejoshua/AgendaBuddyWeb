@@ -13,9 +13,9 @@ if (isset($_POST['title']) && isset($_POST['location']) && isset($_POST['start_t
  
     $title = $_POST['title'];
     $location = $_POST['location'];
-    $startTime = $_POST['start_time'];
-    $endTime = $_POST['end_time'];
-    $eventDate = $_POST['event_date'];
+    $start_time = $_POST['start_time'];
+    $end_time = $_POST['end_time'];
+    $event_date = $_POST['event_date'];
 
 
     // include db connect class
