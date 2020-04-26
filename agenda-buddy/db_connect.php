@@ -27,10 +27,6 @@ class DB_CONNECT {
         // Connecting to mysql database
         $con = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE) or die(mysqli_error());
         
-        if ($mysqli -> connect_errno) {
-            echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
-            exit();
-        }
         
         // returing connection cursor
         return $con;
