@@ -25,11 +25,13 @@ class DB_CONNECT {
         require_once __DIR__ . '/db_config.php';
  
         // Connecting to mysql database
-        $con = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD) or die(mysqli_error());
- 
-        // Selecing database
-        $db = mysqli_select_db(DB_DATABASE) or die(mysqli_error()) or die(mysqli_error());
- 
+        $con = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE) or die(mysqli_error());
+        
+        if ($mysqli -> connect_errno) {
+            echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
+            exit();
+        }
+        
         // returing connection cursor
         return $con;
     }

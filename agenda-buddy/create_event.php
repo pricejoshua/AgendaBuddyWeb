@@ -28,7 +28,7 @@ if (isset($_POST['title']) && isset($_POST['location']) && isset($_POST['start_t
     $db = new DB_CONNECT();
  
     // mysql inserting a new row
-    $result = mysqli_query("INSERT INTO events(title, location, start_time, end_time, year, month, day) VALUES('$title', '$location', '$start_time', '$end_time', '$year', '$month', '$day')");
+    $result = mysqli_query($db, "INSERT INTO events(title, location, start_time, end_time, year, month, day) VALUES('$title', '$location', '$start_time', '$end_time', '$year', '$month', '$day')");
  
     // check if row inserted or not
     if ($result) {
