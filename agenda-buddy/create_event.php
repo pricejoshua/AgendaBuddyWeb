@@ -15,7 +15,10 @@ if (isset($_POST['title']) && isset($_POST['location']) && isset($_POST['start_t
     $location = $_POST['location'];
     $start_time = $_POST['start_time'];
     $end_time = $_POST['end_time'];
-    $event_date = $_POST['event_date'];
+    $year = $_POST['year'];
+    $month = $_POST['month'];
+    $day = $_POST['day'];
+    
 
 
     // include db connect class
@@ -25,7 +28,7 @@ if (isset($_POST['title']) && isset($_POST['location']) && isset($_POST['start_t
     $db = new DB_CONNECT();
  
     // mysql inserting a new row
-    $result = mysqli_query("INSERT INTO events(title, location, start_time, end_time, event_date) VALUES('$title', '$location', '$start_time', '$end_time', '$event_date')");
+    $result = mysqli_query("INSERT INTO events(title, location, start_time, end_time, year, month, day) VALUES('$title', '$location', '$start_time', '$end_time', '$year', '$month', '$day')");
  
     // check if row inserted or not
     if ($result) {
