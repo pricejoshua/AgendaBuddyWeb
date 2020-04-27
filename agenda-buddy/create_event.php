@@ -25,8 +25,7 @@ if (isset($_POST['title']) && isset($_POST['location']) && isset($_POST['start_t
     require_once __DIR__ . '/db_connect.php';
  
     // connecting to db
-    $db = new DB_CONNECT();
-    $con = $db.connect();
+    $con = connect();
  
     // mysql inserting a new row
     $result = mysqli_query($con, "INSERT INTO events(title, location, start_time, end_time, year, month, day) VALUES('$title', '$location', '$start_time', '$end_time', '$year', '$month', '$day')");
