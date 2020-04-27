@@ -23,7 +23,7 @@ if (isset($_POST["eid"])) {
         // check for empty result
         if (mysqli_num_rows($result) > 0) {
  
-            $result = mysql_fetch_array($result);
+            $result = mysqli_fetch_array($result);
                         
             $event = array();
             $event["eid"] = $result["eid"];
