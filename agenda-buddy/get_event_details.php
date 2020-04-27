@@ -7,26 +7,23 @@
  
 // array for JSON response
 $response = array();
- 
-// include db connect class
-require_once __DIR__ . '/db_connect.php';
- 
-// connecting to db
-$db = new DB_CONNECT();
+
+$con = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE) or die(mysqli_error());
+
  
 // check for post data
-if (isset($_GET["eid"])) {
-    $pid = $_GET['eid'];
- 
-    // get a event from events table
-    $result = mysql_query("SELECT *FROM events WHERE eid = $eid");
+if (isset($_POST["eid"])) {
+    $eid = $_POST['eid'];
+    
+    $result = mysqli_query($con, "SELECT *FROM events WHERE eid = $eid");
+
  
     if (!empty($result)) {
         // check for empty result
         if (mysql_num_rows($result) > 0) {
  
             $result = mysql_fetch_array($result);
- 
+                        
             $event = array();
             $event["eid"] = $result["eid"];
             $event["title"] = $result["title"];
