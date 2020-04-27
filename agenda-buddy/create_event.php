@@ -22,7 +22,7 @@ if (isset($_POST['title']) && isset($_POST['location']) && isset($_POST['start_t
 
 
     // include db connect class
-    require_once __DIR__ . '/db_connect.php';
+    include __DIR__ . '/db_connect.php';
  
     // connecting to db
     $con = connect();
