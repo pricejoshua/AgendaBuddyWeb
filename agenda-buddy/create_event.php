@@ -20,8 +20,6 @@ if (isset($_POST['title']) && isset($_POST['location']) && isset($_POST['start_t
     $day = $_POST['day'];
     
     require_once __DIR__ . '/db_config.php';
-
-    // include db connect class
  
     // connecting to db
     $con = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE) or die(mysqli_error());

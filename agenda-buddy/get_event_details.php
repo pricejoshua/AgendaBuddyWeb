@@ -21,7 +21,7 @@ if (isset($_POST["eid"])) {
  
     if (!empty($result)) {
         // check for empty result
-        if (mysql_num_rows($result) > 0) {
+        if (mysqli_num_rows($result) > 0) {
  
             $result = mysql_fetch_array($result);
                         
