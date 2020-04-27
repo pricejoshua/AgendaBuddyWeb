@@ -10,6 +10,7 @@ $response = array();
 
 $con = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE) or die(mysqli_error());
 
+require_once __DIR__ . '/db_config.php';
  
 // check for post data
 if (isset($_POST["eid"])) {
