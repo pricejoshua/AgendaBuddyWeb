@@ -19,14 +19,14 @@ if (isset($_POST['title']) && isset($_POST['location']) && isset($_POST['start_t
     $month = $_POST['month'];
     $day = $_POST['day'];
     
-
+    require_once __DIR__ . '/db_config.php';
 
     // include db connect class
     include __DIR__ . '/db_connect.php';
  
     // connecting to db
-    $con = connect();
- 
+    $con = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE) or die(mysqli_error());
+
     // mysql inserting a new row
     $result = mysqli_query($con, "INSERT INTO events(title, location, start_time, end_time, year, month, day) VALUES('$title', '$location', '$start_time', '$end_time', '$year', '$month', '$day')");
  
