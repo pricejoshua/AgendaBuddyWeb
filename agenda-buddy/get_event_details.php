@@ -15,7 +15,7 @@ $con = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE) or die(mysqli_er
 if (isset($_POST["eid"])) {
     $eid = $_POST['eid'];
     
-    $result = mysqli_query($con, "SELECT *FROM events WHERE eid = $eid");
+    $result = mysqli_query($con, "SELECT * FROM events WHERE eid = $eid");
 
  
     if (!empty($result)) {
