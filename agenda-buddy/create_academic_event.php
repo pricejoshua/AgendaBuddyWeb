@@ -18,7 +18,7 @@ if (isset($_POST['title'])){
     // connecting to db
     $con = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE) or die(mysqli_error());
 
-    $title = mysqli_escape_string(urldecode($_POST['title']));
+    $title = mysqli_escape_string($con, urldecode($_POST['title']));
     $start_time = urldecode($_POST['start_time']);
     $end_time = urldecode($_POST['end_time']);
     $year = urldecode($_POST['year']);
