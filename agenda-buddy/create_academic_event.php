@@ -11,18 +11,20 @@ $response = array();
 // check for required fields
 if (isset($_POST['title'])){
  
-    $title = $_POST['title'];
-    $start_time = $_POST['start_time'];
-    $end_time = $_POST['end_time'];
-    $year = $_POST['year'];
-    $month = $_POST['month'];
-    $day = $_POST['day'];
+
     
     require_once __DIR__ . '/db_config.php';
  
     // connecting to db
     $con = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE) or die(mysqli_error());
 
+    $title = mysqli_escape_string(urldecode($_POST['title']));
+    $start_time = urldecode($_POST['start_time']);
+    $end_time = urldecode($_POST['end_time']);
+    $year = urldecode($_POST['year']);
+    $month = urldecode($_POST['month']);
+    $day = urldecode($_POST['day']);
+    
     // mysql inserting a new row
     $result = mysqli_query($con, "INSERT INTO academic(title, start_time, end_time, year, month, day) VALUES('$title', '$start_time', '$end_time', '$year', '$month', '$day')");
  
