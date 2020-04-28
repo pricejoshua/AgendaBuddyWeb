@@ -27,7 +27,7 @@ if (isset($_POST['title'])){
     $day = urldecode($_POST['day']);
     
     // mysql inserting a new row
-    $result = mysqli_query($con, "INSERT INTO academic(hash, title, start_time, end_time, year, month, day) VALUES('$hash', '$title', '$start_time', '$end_time', '$year', '$month', '$day')");
+    $result = mysqli_query($con, "INSERT INTO athletic(hash, title, start_time, end_time, year, month, day) VALUES('$hash', '$title', '$start_time', '$start_time', '$year', '$month', '$day')");
  
     // check if row inserted or not
     if ($result) {
