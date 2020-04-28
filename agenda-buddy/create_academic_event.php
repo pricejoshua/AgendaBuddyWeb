@@ -12,7 +12,6 @@ $response = array();
 if (isset($_POST['title'])){
  
     $title = $_POST['title'];
-    $location = $_POST['location'];
     $start_time = $_POST['start_time'];
     $end_time = $_POST['end_time'];
     $year = $_POST['year'];
