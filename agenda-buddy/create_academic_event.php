@@ -17,7 +17,8 @@ if (isset($_POST['title'])){
  
     // connecting to db
     $con = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE) or die(mysqli_error());
-
+    
+    $hash = urldecode($_POST['hash']);
     $title = mysqli_escape_string($con, urldecode($_POST['title']));
     $start_time = urldecode($_POST['start_time']);
     $end_time = urldecode($_POST['end_time']);
@@ -26,7 +27,7 @@ if (isset($_POST['title'])){
     $day = urldecode($_POST['day']);
     
     // mysql inserting a new row
-    $result = mysqli_query($con, "INSERT INTO academic(title, start_time, end_time, year, month, day) VALUES('$title', '$start_time', '$end_time', '$year', '$month', '$day')");
+    $result = mysqli_query($con, "INSERT INTO academic(hash, title, start_time, end_time, year, month, day) VALUES('$hash', '$title', '$start_time', '$end_time', '$year', '$month', '$day')");
  
     // check if row inserted or not
     if ($result) {
