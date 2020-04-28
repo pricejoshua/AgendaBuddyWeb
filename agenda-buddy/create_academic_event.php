@@ -25,9 +25,10 @@ if (isset($_POST['title'])){
     $year = urldecode($_POST['year']);
     $month = urldecode($_POST['month']);
     $day = urldecode($_POST['day']);
+    $type = $_POST['type'];
     
     // mysql inserting a new row
-    $result = mysqli_query($con, "INSERT INTO academic(hash, title, start_time, end_time, year, month, day) VALUES('$hash', '$title', '$start_time', '$end_time', '$year', '$month', '$day')");
+    $result = mysqli_query($con, "INSERT INTO community(hash, title, start_time, end_time, year, month, day, type) VALUES('$hash', '$title', '$start_time', '$end_time', '$year', '$month', '$day', '$type')");
  
     // check if row inserted or not
     if ($result) {
