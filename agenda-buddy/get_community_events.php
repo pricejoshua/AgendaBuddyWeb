@@ -13,59 +13,50 @@ $con = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE) or die(mysqli_er
 
  
 // check for post data
-if (isset($_POST["eid"])) {
-    $eid = $_POST['eid'];
+
     
-    $result = mysqli_query($con, "SELECT * FROM community");
+$result = mysqli_query($con, "SELECT * FROM community");
 
- 
-    if (!empty($result)) {
-        // check for empty result
-        if (mysqli_num_rows($result) > 0) {
- 
-            $result = mysqli_fetch_array($result);
-                        
-            $event = array();
-            $event["eid"] = $result["eid"];
-            $event["title"] = $result["title"];
-            $event["location"] = $result["location"];
-            $event["start_time"] = $result["start_time"];
-            $event["end_time"] = $result["end_time"];
-            $event["type"] = $result["type"];
 
-            // success
-            $response["success"] = 1;
- 
-            // user node
-            $response["event"] = array();
- 
-            array_push($response["event"], $event);
- 
-            // echoing JSON response
-            echo json_encode($response);
-        } else {
-            // no event found
-            $response["success"] = 0;
-            $response["message"] = "No event found";
- 
-            // echo no users JSON
-            echo json_encode($response);
-        }
+if (!empty($result)) {
+    // check for empty result
+    if (mysqli_num_rows($result) > 0) {
+
+        $result = mysqli_fetch_array($result);
+
+        $event = array();
+        $event["eid"] = $result["eid"];
+        $event["title"] = $result["title"];
+        $event["location"] = $result["location"];
+        $event["start_time"] = $result["start_time"];
+        $event["end_time"] = $result["end_time"];
+        $event["type"] = $result["type"];
+
+        // success
+        $response["success"] = 1;
+
+        // user node
+        $response["event"] = array();
+
+        array_push($response["event"], $event);
+
+        // echoing JSON response
+        echo json_encode($response);
     } else {
         // no event found
         $response["success"] = 0;
         $response["message"] = "No event found";
-        $response["result"] = $result;
- 
+
         // echo no users JSON
         echo json_encode($response);
     }
 } else {
-    // required field is missing
+    // no event found
     $response["success"] = 0;
-    $response["message"] = "Required field(s) is missing";
- 
-    // echoing JSON response
+    $response["message"] = "No event found";
+    $response["result"] = $result;
+
+    // echo no users JSON
     echo json_encode($response);
 }
 ?>
