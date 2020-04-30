@@ -32,9 +32,11 @@ if (!empty($result)) {
             $event["end_time"] = $row["end_time"];
 
             $event["type"] = $row["type"];
-
+            array_push($response["events"], $event);
         }
-        array_push($response["events"], $event);
+        
+        $response["success"] = 1;
+        
         // echoing JSON response
         echo json_encode($response);
     } else {
