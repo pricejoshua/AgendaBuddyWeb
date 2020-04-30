@@ -31,7 +31,12 @@ if (isset($_POST["type"])) {
                 $event["title"] = $row["title"];
                 $event["start_time"] = $row["start_time"];
                 $event["end_time"] = $row["end_time"];
+                $event["year"] = $row["year"];
+                $event["month"] = $row["month"];
+                $event["day"] = $row["day"];
 
+                
+                
                 $event["type"] = $row["type"];
                 array_push($response["events"], $event);
             }
