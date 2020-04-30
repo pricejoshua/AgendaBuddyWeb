@@ -16,7 +16,7 @@ $con = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE) or die(mysqli_er
 if (isset($_POST["type"])) {
     $type = $_POST['type'];
     
-    $result = mysqli_query($con, "SELECT * FROM community WHERE type = $type");
+    $result = mysqli_query($con, "SELECT * FROM community WHERE type = '$type'");
 
 
     if (!empty($result)) {
