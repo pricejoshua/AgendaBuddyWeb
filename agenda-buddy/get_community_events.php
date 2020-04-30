@@ -13,48 +13,50 @@ $con = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE) or die(mysqli_er
 
  
 // check for post data
-
+if (isset($_POST["type"])) {
+    $type = $_POST['type'];
     
-$result = mysqli_query($con, "SELECT * FROM community");
+    $result = mysqli_query($con, "SELECT * FROM community WHERE type = $type");
 
 
-if (!empty($result)) {
-    // check for empty result
-    if (mysqli_num_rows($result) > 0) {
-        
-        $response["events"] = array();
+    if (!empty($result)) {
+        // check for empty result
+        if (mysqli_num_rows($result) > 0) {
 
-        while ($row = mysqli_fetch_array($result)) {
-            $event = array();
-            $event["hash"] = $row["hash"];
-            $event["title"] = $row["title"];
-            $event["start_time"] = $row["start_time"];
-            $event["end_time"] = $row["end_time"];
+            $response["events"] = array();
 
-            $event["type"] = $row["type"];
-            array_push($response["events"], $event);
+            while ($row = mysqli_fetch_array($result)) {
+                $event = array();
+                $event["hash"] = $row["hash"];
+                $event["title"] = $row["title"];
+                $event["start_time"] = $row["start_time"];
+                $event["end_time"] = $row["end_time"];
+
+                $event["type"] = $row["type"];
+                array_push($response["events"], $event);
+            }
+
+            $response["success"] = 1;
+
+            // echoing JSON response
+            echo json_encode($response);
+        } else {
+            // no event found
+            $response["success"] = 0;
+            $response["message"] = "No event found";
+
+            // echo no users JSON
+            echo json_encode($response);
         }
-        
-        $response["success"] = 1;
-        
-        // echoing JSON response
-        echo json_encode($response);
     } else {
         // no event found
         $response["success"] = 0;
         $response["message"] = "No event found";
+        $response["result"] = $result;
 
         // echo no users JSON
         echo json_encode($response);
     }
-} else {
-    // no event found
-    $response["success"] = 0;
-    $response["message"] = "No event found";
-    $response["result"] = $result;
-
-    // echo no users JSON
-    echo json_encode($response);
 }
 ?>
 
