@@ -22,22 +22,17 @@ if (!empty($result)) {
     // check for empty result
     if (mysqli_num_rows($result) > 0) {
 
-        $result = mysqli_fetch_array($result);
+        while ($row = mysql_fetch_array($result)) {
+            $event = array();
+            $event["hash"] = $row["hash"];
+            $event["title"] = $row["title"];
+            $event["location"] = $row["location"];
+            $event["start_time"] = $row["start_time"];
+            $event["end_time"] = $row["end_time"];
 
-        $event = array();
-        $event["eid"] = $result["eid"];
-        $event["title"] = $result["title"];
-        $event["location"] = $result["location"];
-        $event["start_time"] = $result["start_time"];
-        $event["end_time"] = $result["end_time"];
-        $event["type"] = $result["type"];
+            $event["type"] = $row["type"];
 
-        // success
-        $response["success"] = 1;
-
-        // user node
-        $response["event"] = array();
-
+        }
         array_push($response["event"], $event);
 
         // echoing JSON response
