@@ -27,7 +27,7 @@ if (isset($_POST['title'])){
     $day = urldecode($_POST['day']);
 
     // mysql inserting a new row
-    $result = mysqli_query($con, "INSERT INTO community(hash, title, start_time, end_time, year, month, day, type) VALUES('$hash', '$title', '$start_time', '$end_time', '$year', '$month', '$day', 'athl')");
+    $result = mysqli_query($con, "INSERT INTO community(hash, title, start_time, end_time, year, month, day, type) VALUES('$hash', '$title', '$start_time', '$end_time', '$year', '$month', '$day', 'athletic')");
  
     // check if row inserted or not
     if ($result) {
