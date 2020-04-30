@@ -34,8 +34,7 @@ if (!empty($result)) {
             $event["type"] = $row["type"];
 
         }
-        array_push($response["event"], $event);
-
+        array_push($response["events"], $event);
         // echoing JSON response
         echo json_encode($response);
     } else {
