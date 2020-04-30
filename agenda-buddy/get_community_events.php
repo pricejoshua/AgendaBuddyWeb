@@ -22,7 +22,7 @@ if (!empty($result)) {
     // check for empty result
     if (mysqli_num_rows($result) > 0) {
 
-        while ($row = mysql_fetch_array($result)) {
+        while ($row = mysqli_fetch_array($result)) {
             $event = array();
             $event["hash"] = $row["hash"];
             $event["title"] = $row["title"];
