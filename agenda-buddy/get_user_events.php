@@ -39,7 +39,6 @@ if (isset($_POST["user_email"])) {
                 $event["outside"] = $row["outside"];
                 $event["notify"] = $row["notify"];
                 $event["user_email"] = $row["user_email"];
-
                 
                 
                 $event["type"] = $row["type"];
