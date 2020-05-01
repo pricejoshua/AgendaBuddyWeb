@@ -19,7 +19,7 @@ if (isset($_POST['email'])){
     $con = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE) or die(mysqli_error());
 
     // mysql inserting a new row
-    $result = mysqli_query($con, "INSERT INTO user(email) VALUES('$email')");
+    $result = mysqli_query($con, "INSERT INTO users(email) VALUES('$email')");
  
     // check if row inserted or not
     if ($result) {
