@@ -18,6 +18,7 @@ if (isset($_POST['title']) && isset($_POST['location']) && isset($_POST['start_t
     $year = $_POST['year'];
     $month = $_POST['month'];
     $day = $_POST['day'];
+    $user_email = $_POST['user_email'];
     
     require_once __DIR__ . '/db_config.php';
  
@@ -25,7 +26,7 @@ if (isset($_POST['title']) && isset($_POST['location']) && isset($_POST['start_t
     $con = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE) or die(mysqli_error());
 
     // mysql inserting a new row
-    $result = mysqli_query($con, "INSERT INTO events(title, location, start_time, end_time, year, month, day, user_id) VALUES('$title', '$location', '$start_time', '$end_time', '$year', '$month', '$day', 1)");
+    $result = mysqli_query($con, "INSERT INTO events(title, location, start_time, end_time, year, month, day, user_email) VALUES('$title', '$location', '$start_time', '$end_time', '$year', '$month', '$day', '$user_email')");
  
     // check if row inserted or not
     if ($result) {
